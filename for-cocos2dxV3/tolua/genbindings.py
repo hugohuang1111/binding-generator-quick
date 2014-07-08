@@ -37,6 +37,18 @@ def _check_python_bin_env():
 
     return PYTHON_BIN
 
+def _check_quickx_root():
+    ''' Checking the environment QUICK_V3_ROOT, which will be used for building
+    '''
+
+    try:
+        QUICK_V3_ROOT = os.environ['QUICK_V3_ROOT']
+    except Exception:
+        print "QUICK_V3_ROOT not defined, Please define QUICK_V3_ROOT in your environment."
+        sys.exit(1)
+
+    return QUICK_V3_ROOT
+
 
 class CmdError(Exception):
     pass
@@ -62,6 +74,7 @@ def main():
     ndk_root = _check_ndk_root_env()
     # del the " in the path
     ndk_root = re.sub(r"\"", "", ndk_root)
+    quick_root = _check_quickx_root()
     python_bin = _check_python_bin_env()
 
     platform = sys.platform
@@ -90,9 +103,9 @@ def main():
         print 'path: %s or path: %s are not valid! ' % (x86_llvm_path, x64_llvm_path)
         sys.exit(1)
 
-    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-    cocos_root = os.path.abspath(os.path.join(project_root, ''))
-    cxx_generator_root = os.path.abspath(os.path.join(project_root, 'tools/bindings-generator'))
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    cocos_root = os.path.abspath(quick_root)
+    cxx_generator_root = os.path.abspath(os.path.join(project_root, 'bindings-generator'))
 
     # save config to file
     config = ConfigParser.ConfigParser()
@@ -123,12 +136,10 @@ def main():
 
     try:
 
-        tolua_root = '%s/tools/tolua' % project_root
-        output_dir = '%s/cocos/scripting/lua-bindings/auto' % project_root
+        tolua_root = '%s/tolua' % project_root
+        output_dir = '%s/output/auto' % project_root
 
-        cmd_args = {'cocos2dx.ini' : ('cocos2d-x', 'lua_cocos2dx_auto'), \
-                    'cocos2dx_extension.ini' : ('cocos2dx_extension', 'lua_cocos2dx_extension_auto'), \
-                    'cocos2dx_physics.ini' : ('cocos2dx_physics', 'lua_cocos2dx_physics_auto'), \
+        cmd_args = {'cocos2dx_extra.ini' : ('cocos2dx_extra', 'lua_cocos2dx_extra_auto'), \
                     }
         # cmd_args = {'cocos2dx.ini' : ('cocos2d-x', 'lua_cocos2dx_auto'), \
         #             'cocos2dx_extension.ini' : ('cocos2dx_extension', 'lua_cocos2dx_extension_auto'), \
