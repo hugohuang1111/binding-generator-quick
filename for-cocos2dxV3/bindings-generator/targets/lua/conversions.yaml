@@ -43,6 +43,7 @@ conversions:
     "unsigned long": "ok &= luaval_to_ulong(tolua_S, ${arg_idx}, &${out_value})"
     "long long": "ok &= luaval_to_long_long(tolua_S, ${arg_idx},&${out_value})"
     "std::string": "ok &= luaval_to_std_string(tolua_S, ${arg_idx},&${out_value})"
+    "std::string": " ${out_value}=tolua_tostring(tolua_S,${arg_idx},0); ok=true"
     "String*": "std::string ${out_value}_tmp; ok &= luaval_to_std_string(tolua_S, ${arg_idx}, &${out_value}_tmp); ${out_value} = cocos2d::String::create(${out_value}_tmp)"
     "char*": "std::string ${out_value}_tmp; ok &= luaval_to_std_string(tolua_S, ${arg_idx}, &${out_value}_tmp); ${out_value} = ${out_value}_tmp.c_str()"
     "Point": "ok &= luaval_to_point(tolua_S, ${arg_idx}, &${out_value})"
