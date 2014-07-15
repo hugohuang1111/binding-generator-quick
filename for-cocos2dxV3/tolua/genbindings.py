@@ -139,7 +139,7 @@ def main():
         tolua_root = '%s/tolua' % project_root
         output_dir = '%s/output/auto' % project_root
 
-        cmd_args = {'cocos2dx_extra.ini' : ('cocos2dx_extra', 'lua_cocos2dx_extra_auto'), \
+        cmd_args = {'cocos2dx.ini' : ('cocos2d-x', 'lua_cocos2dx_auto'),
                     }
         # cmd_args = {'cocos2dx.ini' : ('cocos2d-x', 'lua_cocos2dx_auto'), \
         #             'cocos2dx_extension.ini' : ('cocos2dx_extension', 'lua_cocos2dx_extension_auto'), \
@@ -147,6 +147,7 @@ def main():
         #             'cocos2dx_studio.ini' : ('cocos2dx_studio', 'lua_cocos2dx_studio_auto'), \
         #             'cocos2dx_spine.ini' : ('cocos2dx_spine', 'lua_cocos2dx_spine_auto'), \
         #             'cocos2dx_physics.ini' : ('cocos2dx_physics', 'lua_cocos2dx_physics_auto'), \
+        #             'cocos2dx_extra.ini' : ('cocos2dx_extra', 'lua_cocos2dx_extra_auto'), \
         #             }
         target = 'lua'
         generator_py = '%s/generator.py' % cxx_generator_root
