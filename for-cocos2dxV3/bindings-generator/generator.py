@@ -367,8 +367,21 @@ class NativeType(object):
             return str(tpl).rstrip()
         return "#pragma warning NO CONVERSION TO NATIVE FOR " + self.name
 
+    def arg_string(self):
+        name = self.namespaced_name
+        if self.namespaced_name != "cocos2d::Vec2":
+            name = "arg"
+        else:
+            name = "*arg"
+        return name
+
     def to_string(self, generator):
         conversions = generator.config['conversions']
+        if conversions.has_key('native_types_special'):
+            native_types_dict = conversions['native_types_special']
+            if NativeType.dict_has_key_re(native_types_dict, [self.namespaced_name]):
+                return NativeType.dict_get_value_re(native_types_dict, [self.namespaced_name])
+                
         if conversions.has_key('native_types'):
             native_types_dict = conversions['native_types']
             if NativeType.dict_has_key_re(native_types_dict, [self.namespaced_name]):

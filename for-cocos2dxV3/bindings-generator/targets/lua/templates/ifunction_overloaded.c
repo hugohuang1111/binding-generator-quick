@@ -45,7 +45,7 @@ int ${signature_name}(lua_State* tolua_S)
                              "arg":$arg,
                              "ntype": $arg.namespaced_name.replace("*", ""),
                              "scriptname": $generator.scriptname_from_native($arg.namespaced_name, $arg.namespace_name)})};
-                #set $arg_array += ["arg"+str(count)]
+                #set $arg_array += [arg.arg_string()+str(count)]
                 #set $count = $count + 1
 
             #if $arg_idx >= 0 
