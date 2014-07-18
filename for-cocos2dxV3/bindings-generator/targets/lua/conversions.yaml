@@ -48,6 +48,7 @@ conversions:
     "String*": "std::string ${out_value}_tmp; ok &= luaval_to_std_string(tolua_S, ${arg_idx}, &${out_value}_tmp); ${out_value} = cocos2d::String::create(${out_value}_tmp)"
     "char*": "std::string ${out_value}_tmp; ok &= luaval_to_std_string(tolua_S, ${arg_idx}, &${out_value}_tmp); ${out_value} = ${out_value}_tmp.c_str()"
     "Point": "ok &= luaval_to_point(tolua_S, ${arg_idx}, &${out_value})"
+    "Vec2": "ok &= luaval_to_vec2(tolua_S, ${arg_idx}, &${out_value})"
     "Vec3": "ok &= luaval_to_vec3(tolua_S, ${arg_idx}, &${out_value})"
     "Vec4": "ok &= luaval_to_vec4(tolua_S, ${arg_idx}, &${out_value})"
     "Rect": "ok &= luaval_to_rect(tolua_S, ${arg_idx}, &${out_value})"
