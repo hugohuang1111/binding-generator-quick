@@ -20,6 +20,7 @@ conversions:
     "cocos2d::Vec2": "cocos2d::Vec2*"
   ns_map:
     "cocos2d::experimental::ui::": "ccexp."
+    "cocos2d::experimental::": "ccexp."
     "cocos2d::extension::": "cc."
     "cocos2d::ui::": "ccui."
     "cocos2d::": "cc."
