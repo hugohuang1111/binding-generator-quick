@@ -1,5 +1,3 @@
-for-cocos2dxV3/bindings-generator/clang/__init__.pyc
-for-cocos2dxV3/bindings-generator/clang/cindex.pyc
-for-cocos2dxV3/bindings-generator/clang/enumerations.pyc
-for-cocos2dxV3/tolua/userconf.ini
-for-cocos2dxV3/output/
+*.pyc
+userconf.ini
+output/
