@@ -136,7 +136,7 @@ def main():
 
     try:
 
-        tolua_root = '%s/tolua' % project_root
+        tolua_root = '%s/cocos' % project_root
         output_dir = '%s/output/auto' % project_root
 
         cmd_args = {'cocos2dx.ini' : ('cocos2d-x', 'lua_cocos2dx_auto'), \
